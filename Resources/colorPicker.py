@@ -23,6 +23,7 @@ cv2.createTrackbar("VALUE Max","HSV",255,255,empty)
 while True:
 
     _, img = cap.read()
+    print(img)
     imgHsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
 
     h_min = cv2.getTrackbarPos("HUE Min","HSV")
@@ -31,7 +32,7 @@ while True:
     s_max = cv2.getTrackbarPos("SAT Max", "HSV")
     v_min = cv2.getTrackbarPos("VALUE Min", "HSV")
     v_max = cv2.getTrackbarPos("VALUE Max", "HSV")
-    print(h_min)
+    print(h_min, h_max,s_min,s_max,v_min,v_max)
 
     lower = np.array([h_min,s_min,v_min])
     upper = np.array([h_max,s_max,v_max])
@@ -43,7 +44,7 @@ while True:
     #cv2.imshow('Original', img)
     #cv2.imshow('HSV Color Space', imgHsv)
     #cv2.imshow('Mask', mask)
-   #cv2.imshow('Result', result)
+    #cv2.imshow('Result', result)
     cv2.imshow('Horizontal Stacking', hStack)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
